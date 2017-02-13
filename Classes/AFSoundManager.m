@@ -171,7 +171,8 @@ typedef NS_ENUM(int, AFSoundManagerType) {
 -(void)stop {
     [_audioPlayer stop];
     _player = nil;
-    [_timer pauseTimer];
+    [_timer invalidate];
+    _timer = nil;
     _status = AFSoundManagerStatusStopped;
     [_delegate currentPlayingStatusChanged:AFSoundManagerStatusStopped];
     _type = AFSoundManagerTypeNone;
